@@ -1,5 +1,10 @@
 import React from 'react';
 
-export default function Content({ children }) {
-	return <main className="l-content container-fluid">{children}</main>;
+import { Layout } from 'antd';
+
+const { Content } = Layout;
+
+
+export default function ContentCustom({ children }) {
+	return <Content style={{ padding: '0 50px' }}>{children}</Content>;
 }

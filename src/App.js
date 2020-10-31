@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Layout from './layout';
-import Pages from './pages';
+import Views from './views';
 
 export default function App() {
 	return (
 		<Layout>
-			<Pages />
+			<Views />
 		</Layout>
 	);
 }

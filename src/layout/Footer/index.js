@@ -1,3 +1,13 @@
 import React from 'react';
 
-export default () => <footer className="l-footer">Shopping-Car &copy; {new Date().getFullYear()}</footer>;
+import { Layout } from 'antd';
+
+const { Footer } = Layout;
+
+export default () => <Footer style={{
+    textAlign: 'center',
+    position: 'fixed',
+    bottom: 0,
+    width: '100%',
+    boxSizing: 'border-box'
+}}>Shopping-Car &copy; {new Date().getFullYear()}</Footer>;
