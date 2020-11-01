@@ -1,19 +1,51 @@
 import React from 'react';
+import { Form, Input, Button } from 'antd';
+import { useDispatch } from 'react-redux'
+import carActions from '../../actions/carActions'
 
 export default function Add() {
+
+	const dispatch = useDispatch()
+
+	const onFinish = values => {
+		console.log({ values });
+		dispatch(carActions.add(values))
+	};
+
+	const onFinishFailed = errorInfo => {
+		console.log('Failed:', errorInfo);
+	};
+
 	return (
-		<form className="container mt-5">
-			<div className="form-group">
-				<label>Nome</label>
-				<input type="text" name="name" className="form-control" placeholder="Nome..." />
-			</div>
-			<div className="form-group">
-				<label>URL:</label>
-				<input type="text" name="url" className="form-control" placeholder="URL:https://cars" />
-			</div>
-			<button type="submit" className="btn btn-primary">
-				Adicionar
-			</button>
-		</form>
+		<>
+			<Form
+				name="basic"
+				onFinish={onFinish}
+				onFinishFailed={onFinishFailed}
+				className="container mt-5"
+				style={{ margin: 'auto' }}
+				layout="vertical"
+			>
+				<Form.Item
+					label="Nome"
+					name="name"
+					rules={[{ required: true, message: 'Insira o nome!' }]}
+				>
+					<Input />
+				</Form.Item>
+
+				<Form.Item
+					name={'url'} label="Url:" rules={[{ required: true, message: 'Insira a imagem!' }]}
+				>
+					<Input />
+				</Form.Item>
+
+				<Form.Item>
+					<Button type="primary" htmlType="submit">
+						Adicionar
+  					</Button>
+				</Form.Item>
+			</Form>
+		</>
 	);
 }
